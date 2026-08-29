@@ -10,10 +10,16 @@
 		hydrated = true;
 	});
 
-	/** Empty slot clicked → go pick a recipe, remembering where it should land. */
+	/**
+	 * A slot asked to be filled or swapped → go pick a recipe, remembering where
+	 * it should land. `replacing` only changes the wording on the picker.
+	 */
 	function onAssign(event: Event) {
-		const { day, slot } = (event as CustomEvent<{ day: string; slot: string }>).detail;
-		goto(`/?assign=${encodeURIComponent(day)}:${encodeURIComponent(slot)}`);
+		const { day, slot, replacing } = (
+			event as CustomEvent<{ day: string; slot: string; replacing: boolean }>
+		).detail;
+		const target = `${encodeURIComponent(day)}:${encodeURIComponent(slot)}`;
+		goto(`/?assign=${target}${replacing ? '&replacing=1' : ''}`);
 	}
 
 	function onRemove(event: Event) {

@@ -26,8 +26,16 @@ export class RfMealSlot {
   /** The assigned recipe, or null when the slot is free. A JSON attribute also works. */
   @Prop() meal: Partial<Recipe> | string | null = null;
 
-  /** Emitted when the user wants to fill this slot. */
-  @Event({ eventName: 'rfAssign' }) rfAssign: EventEmitter<{ day: string; slot: string }>;
+  /**
+   * Emitted when the user wants to choose a recipe for this slot — both when
+   * filling an empty slot and when swapping the one already in it. `replacing`
+   * distinguishes the two so the host can adjust its wording.
+   */
+  @Event({ eventName: 'rfAssign' }) rfAssign: EventEmitter<{
+    day: string;
+    slot: string;
+    replacing: boolean;
+  }>;
 
   /** Emitted when the user clears this slot. */
   @Event({ eventName: 'rfRemove' }) rfRemove: EventEmitter<{ day: string; slot: string }>;
@@ -35,11 +43,14 @@ export class RfMealSlot {
   /** Emitted when the user opens the assigned recipe. */
   @Event({ eventName: 'rfOpen' }) rfOpen: EventEmitter<{ id: string }>;
 
-  private assign = () => this.rfAssign.emit({ day: this.day, slot: this.slotName });
-  private remove = () => this.rfRemove.emit({ day: this.day, slot: this.slotName });
   private get data(): Partial<Recipe> | null {
     return toObject<Partial<Recipe>>(this.meal);
   }
+
+  private assign = () =>
+    this.rfAssign.emit({ day: this.day, slot: this.slotName, replacing: !!this.data });
+
+  private remove = () => this.rfRemove.emit({ day: this.day, slot: this.slotName });
 
   private open = () => this.data?.id && this.rfOpen.emit({ id: this.data.id });
 
@@ -60,14 +71,26 @@ export class RfMealSlot {
               <button class="slot__title" type="button" onClick={this.open}>
                 {meal.title}
               </button>
-              <button
-                class="slot__remove"
-                type="button"
-                aria-label={`Remove ${meal.title} from ${this.day} ${this.slotName}`}
-                onClick={this.remove}
-              >
-                ×
-              </button>
+              <div class="slot__controls">
+                <button
+                  class="slot__change"
+                  type="button"
+                  title="Swap this meal"
+                  aria-label={`Change ${this.day} ${this.slotName} from ${meal.title}`}
+                  onClick={this.assign}
+                >
+                  ⇄
+                </button>
+                <button
+                  class="slot__remove"
+                  type="button"
+                  title="Remove this meal"
+                  aria-label={`Remove ${meal.title} from ${this.day} ${this.slotName}`}
+                  onClick={this.remove}
+                >
+                  ×
+                </button>
+              </div>
             </div>
           ) : (
             <button

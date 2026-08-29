@@ -71,11 +71,14 @@ action:
 | --- | --- | --- | --- |
 | `<rf-recipe-card>` | `recipe: Recipe`, `favorite: boolean` | `rfFavoriteToggle`, `rfOpen` | `actions` |
 | `<rf-search-bar>` | `value`, `categories: string[]`, `areas: string[]`, `category`, `area` | `rfSearch`, `rfFilterChange` | `trailing` |
-| `<rf-meal-slot>` | `day`, `slotName`, `meal: Recipe \| null` | `rfAssign`, `rfRemove`, `rfOpen` | default (empty-state copy) |
+| `<rf-meal-slot>` | `day`, `slotName`, `meal: Recipe \| null` | `rfAssign` (`{day, slot, replacing}`), `rfRemove`, `rfOpen` | default (empty-state copy) |
 | `<rf-modal>` | `open: boolean`, `heading` | `rfClose` | default, `footer` |
 | `<rf-empty-state>` | `icon`, `message` | — | default |
 
 Every event payload is on `event.detail`.
+
+`rfAssign` fires both when filling an empty slot and when swapping the recipe already in one;
+`detail.replacing` distinguishes the two.
 
 ## Theming
 

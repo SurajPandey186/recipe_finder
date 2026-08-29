@@ -4,7 +4,7 @@ A recipe discovery and weekly meal-planning application built with **Svelte 5 / 
 custom **StencilJS** web component library that is published to npm and consumed from there.
 
 - **Live app:** https://web-ten-tau-66.vercel.app
-- **npm package:** [`@surajbhushanpandey/recipe-ui`](https://www.npmjs.com/package/@surajbhushanpandey/recipe-ui) (v1.0.1)
+- **npm package:** [`@surajbhushanpandey/recipe-ui`](https://www.npmjs.com/package/@surajbhushanpandey/recipe-ui) (v1.1.0)
 - **Repository:** https://github.com/SurajPandey186/recipe_finder
 
 ## Features
@@ -20,7 +20,8 @@ blocks saving and shows per-field errors. Your recipes appear in search alongsid
 **Favourites** — save any recipe (API or your own) and view them all in one place.
 
 **Weekly meal planner** — a 7 × 3 grid of day/meal slots. Assign recipes from anywhere in the app,
-or click an empty slot to go pick one and have it drop straight into place.
+or click an empty slot to go pick one and have it drop straight into place. Filled slots can be
+swapped in place (⇄) or cleared (×).
 
 ## Repository layout
 

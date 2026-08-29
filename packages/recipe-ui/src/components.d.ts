@@ -138,7 +138,11 @@ declare global {
         new (): HTMLRfEmptyStateElement;
     };
     interface HTMLRfMealSlotElementEventMap {
-        "rfAssign": { day: string; slot: string };
+        "rfAssign": {
+    day: string;
+    slot: string;
+    replacing: boolean;
+  };
         "rfRemove": { day: string; slot: string };
         "rfOpen": { id: string };
     }
@@ -278,9 +282,13 @@ declare namespace LocalJSX {
          */
         "meal"?: Partial<Recipe> | string | null;
         /**
-          * Emitted when the user wants to fill this slot.
+          * Emitted when the user wants to choose a recipe for this slot — both when filling an empty slot and when swapping the one already in it. `replacing` distinguishes the two so the host can adjust its wording.
          */
-        "onRfAssign"?: (event: RfMealSlotCustomEvent<{ day: string; slot: string }>) => void;
+        "onRfAssign"?: (event: RfMealSlotCustomEvent<{
+    day: string;
+    slot: string;
+    replacing: boolean;
+  }>) => void;
         /**
           * Emitted when the user opens the assigned recipe.
          */

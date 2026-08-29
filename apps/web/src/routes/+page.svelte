@@ -22,6 +22,8 @@
 		return { day: day as Day, slot: slot as MealSlot };
 	});
 
+	const isReplacing = $derived(page.url.searchParams.get('replacing') === '1');
+
 	/**
 	 * Navigate by URL rather than local state so searches and filters are
 	 * shareable, bookmarkable, and survive a reload.
@@ -35,7 +37,10 @@
 		if (category) params.set('category', category);
 		if (area) params.set('area', area);
 		// Keep the planner target across searches so the flow isn't lost mid-pick.
-		if (assignTarget) params.set('assign', `${assignTarget.day}:${assignTarget.slot}`);
+		if (assignTarget) {
+			params.set('assign', `${assignTarget.day}:${assignTarget.slot}`);
+			if (isReplacing) params.set('replacing', '1');
+		}
 		const qs = params.toString();
 		goto(qs ? `/?${qs}` : '/', { keepFocus: true, noScroll: true });
 	}
@@ -80,7 +85,8 @@
 {#if assignTarget}
 	<div class="assign-banner">
 		<span>
-			Choosing a recipe for <strong>{assignTarget.day} {assignTarget.slot.toLowerCase()}</strong>.
+			{isReplacing ? 'Swapping' : 'Choosing'} the recipe for
+			<strong>{assignTarget.day} {assignTarget.slot.toLowerCase()}</strong>.
 		</span>
 		<a class="btn btn--sm" href="/planner">Cancel</a>
 	</div>
@@ -119,6 +125,7 @@
 	<RecipeGrid
 		recipes={all}
 		{assignTarget}
+		{isReplacing}
 		emptyIcon="🔍"
 		emptyMessage="No recipes match those filters"
 	>

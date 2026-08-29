@@ -65,13 +65,19 @@
   color: var(--_accent);
 }
 
-.slot__remove {
+.slot__controls {
+  display: flex;
   flex-shrink: 0;
+  gap: 0.1rem;
+}
+
+.slot__change,
+.slot__remove {
   width: 20px;
   height: 20px;
   display: grid;
   place-items: center;
-  font-size: 1rem;
+  font-size: 0.85rem;
   line-height: 1;
   color: var(--_muted);
   background: none;
@@ -80,9 +86,22 @@
   cursor: pointer;
 }
 
+.slot__remove {
+  font-size: 1rem;
+}
+
+.slot__change:hover,
 .slot__remove:hover {
   color: #fff;
   background: var(--_accent);
+}
+
+.slot__change:focus-visible,
+.slot__remove:focus-visible,
+.slot__title:focus-visible,
+.slot__empty:focus-visible {
+  outline: 2px solid var(--_accent);
+  outline-offset: 1px;
 }
 
 .slot__empty {

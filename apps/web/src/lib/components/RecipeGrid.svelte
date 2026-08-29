@@ -13,6 +13,8 @@
 		 * "Add to plan" assigns straight into it instead of opening the picker.
 		 */
 		assignTarget?: { day: Day; slot: MealSlot } | null;
+		/** True when `assignTarget` already holds a recipe, so this is a swap. */
+		isReplacing?: boolean;
 		emptyIcon?: string;
 		emptyMessage?: string;
 		emptyChildren?: import('svelte').Snippet;
@@ -21,6 +23,7 @@
 	let {
 		recipes,
 		assignTarget = null,
+		isReplacing = false,
 		emptyIcon = '🍽️',
 		emptyMessage = 'No recipes found',
 		emptyChildren
@@ -67,7 +70,9 @@
 					type="button"
 					onclick={() => planClicked(recipe)}
 				>
-					{assignTarget ? `Put in ${assignTarget.slot.toLowerCase()}` : '+ Add to plan'}
+					{assignTarget
+						? `${isReplacing ? 'Swap into' : 'Put in'} ${assignTarget.slot.toLowerCase()}`
+						: '+ Add to plan'}
 				</button>
 			</rf-recipe-card>
 		{/each}

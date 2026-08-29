@@ -43,14 +43,6 @@ export const planner = {
 		store.current = { ...store.current, [day]: dayPlan };
 	},
 
-	/** Move an assignment between slots — used by the planner's change action. */
-	move(from: { day: Day; slot: MealSlot }, to: { day: Day; slot: MealSlot }) {
-		const recipe = planner.get(from.day, from.slot);
-		if (!recipe) return;
-		planner.remove(from.day, from.slot);
-		planner.assign(to.day, to.slot, recipe);
-	},
-
 	clear() {
 		store.current = {};
 	},

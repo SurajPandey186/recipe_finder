@@ -24,11 +24,11 @@ copy and the "assign" affordance without the library hard-coding either.
 
 ## Events
 
-| Event      | Description                                      | Type                                          |
-| ---------- | ------------------------------------------------ | --------------------------------------------- |
-| `rfAssign` | Emitted when the user wants to fill this slot.   | `CustomEvent<{ day: string; slot: string; }>` |
-| `rfOpen`   | Emitted when the user opens the assigned recipe. | `CustomEvent<{ id: string; }>`                |
-| `rfRemove` | Emitted when the user clears this slot.          | `CustomEvent<{ day: string; slot: string; }>` |
+| Event      | Description                                                                                                                                                                                                   | Type                                                              |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `rfAssign` | Emitted when the user wants to choose a recipe for this slot — both when filling an empty slot and when swapping the one already in it. `replacing` distinguishes the two so the host can adjust its wording. | `CustomEvent<{ day: string; slot: string; replacing: boolean; }>` |
+| `rfOpen`   | Emitted when the user opens the assigned recipe.                                                                                                                                                              | `CustomEvent<{ id: string; }>`                                    |
+| `rfRemove` | Emitted when the user clears this slot.                                                                                                                                                                       | `CustomEvent<{ day: string; slot: string; }>`                     |
 
 
 ## Slots
