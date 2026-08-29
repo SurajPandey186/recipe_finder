@@ -77,6 +77,7 @@ Other useful commands, all from `apps/web`:
 | `npm run build` | Production build |
 | `npm run preview` | Serve the production build locally |
 | `npm run check` | Type-check with `svelte-check` |
+| `npm run test:e2e` | Run the end-to-end browser tests (see [Testing](#testing)) |
 
 To work on the library and app together, run `npm start` in `packages/recipe-ui` (watch mode) and
 re-install the packed tarball in the app, or temporarily point the dependency at the local folder.
@@ -170,8 +171,23 @@ outside the account — the public URL above is the one to use.
 ## Testing
 
 The SvelteKit ↔ Stencil boundary is the part of this project most likely to break silently, so it is
-covered by an end-to-end Playwright run against a real browser. It asserts the things that actually
-matter for the integration rather than just that pages return 200:
+covered by an end-to-end Playwright run against a real browser (`apps/web/e2e/run.mjs`).
+
+```bash
+cd apps/web
+npx playwright install chromium   # one-off: fetch the browser binary
+npm run dev                       # in one terminal
+npm run test:e2e                  # in another
+```
+
+It can be pointed at any deployment, which is how the live site is verified:
+
+```bash
+BASE=https://web-ten-tau-66.vercel.app npm run test:e2e
+```
+
+40 checks, currently all passing against production. It asserts the things that actually matter for
+the integration rather than just that pages return 200:
 
 - object and array props arrive as **properties**, not stringified attributes
 - each custom event (`rfSearch`, `rfFilterChange`, `rfFavoriteToggle`, `rfOpen`, `rfAssign`,
