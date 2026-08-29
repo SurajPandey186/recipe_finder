@@ -1,0 +1,103 @@
+:host {
+  display: block;
+  --_accent: var(--rf-accent, #e2564a);
+  --_radius: var(--rf-radius, 10px);
+  --_surface: var(--rf-surface, #ffffff);
+  --_text: var(--rf-text, #1c1917);
+  --_muted: var(--rf-muted, #78716c);
+  --_border: var(--rf-border, #e7e5e4);
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  height: 100%;
+  padding: 0.5rem;
+  background: var(--_surface);
+  border: 1px solid var(--_border);
+  border-radius: var(--_radius);
+}
+
+.slot__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--_muted);
+}
+
+.slot__meal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.4rem;
+}
+
+.slot__thumb {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.slot__title {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  text-align: left;
+  color: var(--_text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.slot__title:hover {
+  color: var(--_accent);
+}
+
+.slot__remove {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--_muted);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slot__remove:hover {
+  color: #fff;
+  background: var(--_accent);
+}
+
+.slot__empty {
+  flex: 1;
+  min-height: 2.4rem;
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--_muted);
+  background: none;
+  border: 1px dashed var(--_border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.slot__empty:hover {
+  color: var(--_accent);
+  border-color: var(--_accent);
+}

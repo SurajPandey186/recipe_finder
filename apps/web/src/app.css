@@ -1,0 +1,278 @@
+:root {
+	/* Theme tokens. The Stencil components read the --rf-* names, so setting
+	   them here themes the whole component library from the app. */
+	--rf-accent: #e2564a;
+	--rf-radius: 12px;
+	--rf-surface: #ffffff;
+	--rf-text: #1c1917;
+	--rf-muted: #78716c;
+	--rf-border: #e7e5e4;
+
+	--bg: #faf9f7;
+	--maxw: 72rem;
+
+	color-scheme: light;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family:
+		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	color: var(--rf-text);
+	background: var(--bg);
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+}
+
+.shell {
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: 0 1rem 4rem;
+}
+
+/* ---- Header ---- */
+
+.masthead {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	background: rgb(250 249 247 / 0.85);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--rf-border);
+}
+
+.masthead__inner {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: 0.7rem 1rem;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-size: 1.05rem;
+	font-weight: 700;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.15rem;
+	margin-left: auto;
+}
+
+.nav a {
+	position: relative;
+	padding: 0.4rem 0.65rem;
+	font-size: 0.88rem;
+	font-weight: 500;
+	color: var(--rf-muted);
+	text-decoration: none;
+	border-radius: 8px;
+}
+
+.nav a:hover {
+	color: var(--rf-text);
+	background: var(--rf-border);
+}
+
+.nav a[aria-current='page'] {
+	color: var(--rf-accent);
+	font-weight: 600;
+}
+
+.badge {
+	display: inline-block;
+	min-width: 1.1rem;
+	margin-left: 0.3rem;
+	padding: 0 0.28rem;
+	font-size: 0.68rem;
+	font-weight: 700;
+	line-height: 1.15rem;
+	text-align: center;
+	color: #fff;
+	background: var(--rf-accent);
+	border-radius: 999px;
+}
+
+/* ---- Page furniture ---- */
+
+.page-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin: 1.75rem 0 1rem;
+}
+
+.page-head h1 {
+	margin: 0;
+	font-size: 1.5rem;
+	letter-spacing: -0.01em;
+}
+
+.page-head p {
+	margin: 0.2rem 0 0;
+	font-size: 0.9rem;
+	color: var(--rf-muted);
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+	gap: 1rem;
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.5rem 0.9rem;
+	font: inherit;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--rf-text);
+	text-decoration: none;
+	background: var(--rf-surface);
+	border: 1px solid var(--rf-border);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.btn:hover {
+	border-color: var(--rf-muted);
+}
+
+.btn--primary {
+	color: #fff;
+	background: var(--rf-accent);
+	border-color: var(--rf-accent);
+}
+
+.btn--primary:hover {
+	filter: brightness(0.95);
+}
+
+.btn--danger {
+	color: #b91c1c;
+	border-color: #fecaca;
+	background: #fef2f2;
+}
+
+.btn--sm {
+	padding: 0.32rem 0.6rem;
+	font-size: 0.78rem;
+}
+
+.btn--block {
+	width: 100%;
+	justify-content: center;
+}
+
+/* ---- Forms ---- */
+
+.field {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+.field__label {
+	display: block;
+	margin-bottom: 0.3rem;
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.field__control {
+	width: 100%;
+	padding: 0.55rem 0.7rem;
+	font: inherit;
+	font-size: 0.92rem;
+	color: var(--rf-text);
+	background: var(--rf-surface);
+	border: 1px solid var(--rf-border);
+	border-radius: 10px;
+}
+
+.field__control:focus-visible {
+	outline: 2px solid var(--rf-accent);
+	outline-offset: 1px;
+}
+
+.field__control--invalid {
+	border-color: #dc2626;
+}
+
+.field__error {
+	display: block;
+	margin-top: 0.28rem;
+	font-size: 0.8rem;
+	color: #dc2626;
+}
+
+.field__hint {
+	display: block;
+	margin-top: 0.28rem;
+	font-size: 0.8rem;
+	color: var(--rf-muted);
+}
+
+textarea.field__control {
+	min-height: 9rem;
+	resize: vertical;
+}
+
+.row {
+	display: flex;
+	gap: 0.5rem;
+	align-items: flex-start;
+}
+
+.row > .field {
+	flex: 1;
+	margin-bottom: 0;
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.card-surface {
+	padding: 1.25rem;
+	background: var(--rf-surface);
+	border: 1px solid var(--rf-border);
+	border-radius: var(--rf-radius);
+}
+
+.alert {
+	padding: 0.7rem 0.85rem;
+	margin-bottom: 1rem;
+	font-size: 0.87rem;
+	color: #b91c1c;
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	border-radius: 10px;
+}

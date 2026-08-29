@@ -1,0 +1,76 @@
+:host {
+  --_radius: var(--rf-radius, 14px);
+  --_surface: var(--rf-surface, #ffffff);
+  --_text: var(--rf-text, #1c1917);
+  --_muted: var(--rf-muted, #78716c);
+  --_border: var(--rf-border, #e7e5e4);
+}
+
+:host(:not([open])) {
+  display: none;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 0.45);
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(38rem, 100%);
+  max-height: min(85vh, 46rem);
+  background: var(--_surface);
+  border-radius: var(--_radius);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
+  overflow: hidden;
+}
+
+.dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--_border);
+}
+
+.dialog__title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--_text);
+}
+
+.dialog__close {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--_muted);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dialog__close:hover {
+  background: var(--_border);
+}
+
+.dialog__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+}
+
+.dialog__foot:not(:empty) {
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid var(--_border);
+}

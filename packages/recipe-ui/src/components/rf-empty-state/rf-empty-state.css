@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  --_muted: var(--rf-muted, #78716c);
+  --_text: var(--rf-text, #1c1917);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.empty__icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.empty__message {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--_text);
+}
+
+.empty__extra {
+  color: var(--_muted);
+  font-size: 0.9rem;
+}

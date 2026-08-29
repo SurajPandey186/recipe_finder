@@ -1,0 +1,114 @@
+:host {
+  display: block;
+  --_accent: var(--rf-accent, #e2564a);
+  --_radius: var(--rf-radius, 14px);
+  --_surface: var(--rf-surface, #ffffff);
+  --_text: var(--rf-text, #1c1917);
+  --_muted: var(--rf-muted, #78716c);
+  --_border: var(--rf-border, #e7e5e4);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--_surface);
+  border: 1px solid var(--_border);
+  border-radius: var(--_radius);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+}
+
+.card--placeholder {
+  min-height: 260px;
+  background: var(--_border);
+}
+
+.card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  background: var(--_border);
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card__media-fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 2.5rem;
+}
+
+.card__fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--_muted);
+  background: rgb(255 255 255 / 0.92);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.card__fav:hover {
+  transform: scale(1.08);
+}
+
+.card__fav--on {
+  color: var(--_accent);
+}
+
+.card__body {
+  flex: 1;
+  padding: 0.85rem 0.95rem 0.6rem;
+}
+
+.card__title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--_text);
+  cursor: pointer;
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--_accent);
+  background: color-mix(in srgb, var(--_accent) 12%, transparent);
+  border-radius: 999px;
+}
+
+.chip--muted {
+  color: var(--_muted);
+  background: color-mix(in srgb, var(--_muted) 12%, transparent);
+}
+
+.card__footer:not(:empty) {
+  padding: 0 0.95rem 0.95rem;
+}

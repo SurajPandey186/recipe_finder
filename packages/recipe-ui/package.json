@@ -1,0 +1,55 @@
+{
+  "name": "@surajbhushanpandey/recipe-ui",
+  "version": "1.0.1",
+  "description": "Reusable web components for recipe discovery and meal planning UIs, built with StencilJS.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/components/index.js",
+  "module": "dist/components/index.js",
+  "types": "dist/components/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/recipe-ui/recipe-ui.esm.js",
+  "exports": {
+    ".": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs.js",
+      "default": "./loader/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "sideEffects": [
+    "./dist/components/*.js",
+    "./loader/*.js"
+  ],
+  "keywords": [
+    "stencil",
+    "web-components",
+    "custom-elements",
+    "recipe",
+    "meal-planner",
+    "svelte"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@stencil/core": "^4.44.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

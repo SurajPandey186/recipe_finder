@@ -5,7 +5,7 @@ custom **StencilJS** web component library that is published to npm and consumed
 
 - **Live app:** https://web-ten-tau-66.vercel.app
 - **npm package:** [`@surajbhushanpandey/recipe-ui`](https://www.npmjs.com/package/@surajbhushanpandey/recipe-ui) (v1.0.1)
-- **Repository:** https://github.com/SurajPandey186/recepie_finder
+- **Repository:** https://github.com/SurajPandey186/recipe_finder
 
 ## Features
 
@@ -40,7 +40,7 @@ local source — making it impossible to tell whether the published artifact act
 Requires Node 20+ (developed on Node 24).
 
 ```bash
-git clone https://github.com/SurajPandey186/recepie_finder.git
+git clone https://github.com/SurajPandey186/recipe_finder.git
 cd recepie_finder
 ```
 
