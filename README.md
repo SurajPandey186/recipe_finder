@@ -155,6 +155,10 @@ cd apps/web
 npx vercel deploy --prod
 ```
 
+The Vercel project is connected to this repository with its **Root Directory** set to
+`apps/web`, so every push to `main` triggers a production deployment automatically — the
+command above is only needed for a manual out-of-band deploy.
+
 The live URL is **https://web-ten-tau-66.vercel.app**.
 
 Note that Vercel also generates two account-scoped aliases
